@@ -18,33 +18,62 @@ class CurrencyTest {
 		EUR = new Currency("EUR", 1.5);
 	}
 
+	/*
+	 * Testing getName() method
+	 * Comparing temporary name variable of value "SEK" with SEK Currency's name
+	 * Should return true
+	*/
 	@Test
 	public void testGetName() {
-		assertEquals("SEK", SEK.getName());
+		String tempName = "SEK";
+		assertEquals(tempName, SEK.getName());
 	}
 	
+	/*
+	 * Testing getRate() method
+	 * Comparing temporary rate variable of value 0.15 with SEK Currency's rate
+	 * Should return true
+	*/
 	@Test
 	public void testGetRate() {
-		assertEquals(0.15, SEK.getRate());
+		Double tempRate = 0.15;
+		assertEquals(tempRate, SEK.getRate());
 	}
 	
+	/*
+	 * Testing setRate() method
+	 * Setting new rate for DKK Currency with temporary rate variable of value 0.50
+	 * Comparing temporary rate variable with updated DKK Currency's rate
+	*/
 	@Test
 	public void testSetRate() {
-		DKK.setRate(0.50);
-		assertEquals(0.50, DKK.getRate());
+		Double tempRate = 0.50;
+		DKK.setRate(tempRate);
+		assertEquals(tempRate, DKK.getRate());
 	}
 	
+	/*
+	 * Testing universalValue() method
+	 * Creating temporary universal value variable of value 12345
+	 * Comparing it with custom universal value
+	*/
 	@Test
 	public void testUniversalValue() {
 		Double uVal = SEK.universalValue(12345);
 		assertEquals(123.45 * SEK.getRate(), uVal);
 	}
 	
+	/*
+	 * Testing valueInThisCurrency() method
+	 * Creating EURtoSEK variable of EUR Currency amount converted to SEK Currency 
+	 * Creating temporary variable in SEK Currency
+	 * Comparing temporary variable with converted EURtoSEK amount
+	*/
 	@Test
 	public void testValueInThisCurrency() {
 		Double EURtoSEK = SEK.valueInThisCurrency(10025, EUR);
-		Double testVal = 100.25 * SEK.getRate();
-		assertEquals(testVal, EURtoSEK);
+		Double temptVal = 100.25 * SEK.getRate();
+		assertEquals(temptVal, EURtoSEK);
 	}
 	
 }

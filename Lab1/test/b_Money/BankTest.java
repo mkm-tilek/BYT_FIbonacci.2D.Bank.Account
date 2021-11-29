@@ -23,12 +23,17 @@ class BankTest {
 	}
 
 	// testing getName() method
+	// Comparing temporary variable with SweBank name
+	// Should return true
 	@Test
 	void testGetName() {
-		assertEquals("SweBank", SweBank.getName());
+		var tempName = "SweBank";
+		assertEquals(tempName, SweBank.getName());
 	}
 
 	// testing getCurrency() method
+	// Comparing SEK Currency with Currency of SweBank
+	// Should return true
 	@Test
 	void testGetCurrency() {
 		assertEquals(SEK, SweBank.getCurrency());
@@ -36,6 +41,8 @@ class BankTest {
 
 	// testing openAccount() method
 	// Found bug, there was no creation statement of Account 
+	// Checking if openAccount method returns true, if account exists we get error statement
+	// Comparing this account's name with temporary String "John"
 	@Test
 	void testOpenAccount() {
 		try {
@@ -53,7 +60,9 @@ class BankTest {
 	}
 
 	// testing deposit() method
-	// Found bug in if statement
+	// Found bug in if statement, it should had a NOT operator in Exception control
+	// Adding money to account "John" then
+	// Comparing temporary amount with this account, should return true
 	@Test
 	void testDeposit() {
 		try {
@@ -65,7 +74,10 @@ class BankTest {
 	}
 
 	// testing withdraw() method
-	// Found bug in if statement
+	// Found bug in if statement, it should had a NOT operator in Exception control
+	// Adding money to account "Bob" then
+	// Withdrawing money from account "Bob" then
+	// Comparing temporary amount with this account, should return true
 	@Test
 	void testWithdraw() {
 		try {
@@ -78,17 +90,23 @@ class BankTest {
 	}
 
 	// testing getBalance() method
+	// Creating variable of amount 50.00 in SEK Currency
+	// Comparing temporary money with account "Bob" balance, should return true
 	@Test
 	void testGetBalance() {
 		try {
-			assertEquals(SEK.valueInThisCurrency(5000, SEK), SweBank.getBalance("Bob"));
+			var temp = SEK.valueInThisCurrency(5000, SEK);
+			assertEquals(temp, SweBank.getBalance("Bob"));
 		} catch(AccountDoesNotExistException e) {
 			System.out.println(e.getMessage());
 		}
 	}
 	
 	// testing transfer() method
-	// found bug in overloading transfer() method
+	// Found bug in overloading transfer() method
+	// Creating new accounts with some balance
+	// And making transfer operations between them, to make them equal
+	// Comparing accounts, should return true
 	@Test
 	public void testTransfer() throws Exception {
 		try {
@@ -114,6 +132,10 @@ class BankTest {
 	}
 	
 	// testing timedPayment() method
+	// Found bug, bad implementation of counting ticks
+	// Creating new account with some balance
+	// Performing delayed payments for accounts
+	// And initializing tick method to check if account balance was increased
 	@Test
 	public void testTimedPayment() throws AccountDoesNotExistException {
 		try {

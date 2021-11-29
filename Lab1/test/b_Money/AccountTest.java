@@ -24,6 +24,8 @@ class AccountTest {
 
 	// testing TimePayment methods - remove, add
 	// adjusted tick() method
+	// Creating temporary Accounts and creating delayed payments
+	// And comparing accounts balances with expected amount, if delayed payment was removed or performed
 	@Test
 	public void testAddRemoveTimedPayment() throws AccountDoesNotExistException {
 		try {
@@ -44,6 +46,10 @@ class AccountTest {
 	}
 	
 	// testing timePayment() method
+	// Found bug, bad implementation of counting ticks
+	// Creating new account with some balance
+	// Performing delayed payments for accounts
+	// And initializing tick method to check if account balance was increased
 	@Test
 	public void testTimedPayment() throws AccountDoesNotExistException {
 		try {
@@ -71,7 +77,9 @@ class AccountTest {
 		}		
 	}
 
-	// testing withdraw() method
+	// testing deposit() and withdraw() methods
+	// Adding and Withdrawing money from test Acoount
+	// Comparing new amounts with this account, should return true
 	@Test
 	public void testAddWithdraw() {
 		Double balance = 100000.00 * 0.15;
@@ -84,6 +92,8 @@ class AccountTest {
 	}
 	
 	// testing getBalance() method
+	// Creating variable of amount 50.00 in SEK Currency
+	// Comparing temporary money with account "Фдшсу" balance, should return true
 	@Test
 	public void testGetBalance() {
 		try {
